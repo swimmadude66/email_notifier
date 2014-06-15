@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ -e /home/.emails/updates.txt ]
+	then
+		rm -f /home/.emails/updates.txt
+		echo removed updates.txt
+fi
+
+/usr/lib/update-notifier/apt-check -p >/home/.emails/updates.txt 2>&1
+
+echo updates exported
+
+if [ -s /home/.emails/updates.txt ]
+	then
+		echo building email
+		python /home/.emails/emailBuilder.py -u
+		echo sending emails
+		python /home/.emails/emailSender.py /home/.emails/update_email.txt 'Updates are available for your computer'
+		rm -f /home/.emails/update_email.txt
+		echo emails sent
+fi

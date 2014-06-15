@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "<h2>Your computer is going offline</h2><p>An email will be sent when power is restored</p>">shutdown.txt
+python /home/.emails/emailSender.py /home/.emails/shutdown.txt "Your computer is being powered down"
+

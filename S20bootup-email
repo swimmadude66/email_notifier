@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "<h2>Your computer is back online</h2><p>Please log on and re-initialize any necessary processes</p>">rebooted.txt
+python /home/.emails/emailSender.py /home/.emails/rebooted.txt "Power has been restored to your computer"
+
